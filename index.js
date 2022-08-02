@@ -41,7 +41,15 @@ const characters = require('./swapi');
  *
  */
 
-function listAllCharacters() {}
+function listAllCharacters(characters) {
+  if (characters.length === 0) {
+    throw `Error`;
+  }
+  const allChars = characters.map((char) => {
+    return char.name;
+  });
+  return allChars;
+};
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(listAllCharacters([]));
@@ -61,10 +69,20 @@ function listAllCharacters() {}
  * No example for this one. You should be able to find the average at this point
  */
 
-function averageHeightOfAllCharacters() {}
+function averageHeightOfAllCharacters(characters) {
+  let mean = 0;
+  
+    characters.forEach((char, i, arr) => {
+    mean += char.height  / arr.length
+  
+      
+ 
+  });
+  return mean
+};
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
-//console.log(averageHeightOfAllCharacters(characters))
+// console.log(averageHeightOfAllCharacters(characters))
 
 //*************************************************************************************************/
 
@@ -98,7 +116,18 @@ function averageHeightOfAllCharacters() {}
  *
  */
 
-function checkForEyeColor() {}
+function checkForEyeColor(characters, eyes) {
+  if (characters.length === 0) {
+    throw `Error`
+  }
+  const eyeColors = characters.some((char) => {
+    if (char.eye_color === eyes) {
+      return true
+    }
+    return false
+  });
+  return eyeColors
+};
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(checkForEyeColor([]));
@@ -150,7 +179,22 @@ function checkForEyeColor() {}
  *
  */
 
-function getAllCharactersCreatedAfterYear() {}
+function getAllCharactersCreatedAfterYear(characters, date) {
+  //date = 2016
+  retArr = []
+  const charsByYear = characters.filter((char) => {
+    // console.log('slice', Number(char.created.slice(0, 4)))
+    if (Number(char.created.slice(0, 4) >= date)) {
+      return char;
+    }
+    
+   
+  });
+  console.log(charsByYear)
+  charsByYear
+};
+
+
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(getAllCharactersCreatedAfterYear(characters, 2016));
@@ -205,7 +249,17 @@ function getAllCharactersCreatedAfterYear() {}
    }
  */
 
-function getCharacterInMovie() {}
+function getCharacterInMovie(characters, movie) {
+  if (characters.length === 0) {
+    thow`Error`;
+  }
+  const findChars = characters.find((char) => {
+    if (char.films.includes(movie)) {
+      return char;
+    }
+  });
+  return findChars
+};
 
 //UNCOMMENT THE LINES ONE AT A TIME BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 // console.log(getCharacterInMovie(characters, ''));
@@ -224,8 +278,16 @@ function getCharacterInMovie() {}
  *
  *  @returns {Array[]}} - returns an array of arrays.
  */
-
-function homeWorldValues() {}
+let retArr = []
+let objArr 
+function homeWorldValues(characters) {
+  const homeWorldVals = characters.filter((char) => {
+    if (char.eye_color === `yellow`) {
+      
+    }
+  });
+  return homeWorldVals
+}
 
 //UNCOMMENT THE LINE BELOW TO TEST YOUR SOLUTION MANUALLY, THEN COMMENT BACK IN
 console.log(homeWorldValues(characters));
